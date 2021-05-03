@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+<body>
+
+    <form method="post" action="/">
+        <input type="submit" value="Home" name="Home"/>
+        <input type="submit" value="Total sum" name="Total sum"/>
+        <input type="submit" value="Zealand" name="action3" />
+    </form>
+
+    <table>
+        <tr>
+        {% for s in header %}
+            <th>{{ s }}</th>
+        {% endfor %}
+        </tr>
+
+        <tr>
+        {% for s in datasæt %}
+            <td>{{ s }}</td>
+        {% endfor %}
+        </tr>
+
+        </tr>
+
+    </table>
+</body>
+</html>

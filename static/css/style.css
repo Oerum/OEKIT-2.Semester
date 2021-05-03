@@ -1,0 +1,30 @@
+body {
+  background-color: rgb(221, 221, 221);
+}
+
+h1 {
+  color: rgb(128, 0, 0);
+  margin-left: 20px;
+}
+
+table {
+  width: 100%;
+}
+
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+
+th {
+  background: #332;
+  color: white;
+}
+
+td, th {
+  padding: 6px;
+  text-align: left;
+}
+
+tr {
+  background-color:rgba(234, 174, 174, 0.361)
+}
