@@ -27,20 +27,21 @@
 <!--Linechart-->
 
 <div>
-  <canvas id="myChart" style="height:400px;width: content-box;"></canvas>
+  <canvas id="myChart" style="height:400px; width:400px: content-box;"></canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type=text/javascript src="{{url_for('static', filename='js/javascript.js') }}"></script>
 <script>
-const labels = [ {{dates|tojson}} ]
+
+const labels = {{date | tojson}}
 const data = {
   labels: labels,
   datasets: [{
-    label: '',
+    label: 'Sales for each period',
     backgroundColor: 'rgb(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
-    data: [{{sales|tojson }}],
+    data: {{ sales | safe }},
   }]
 };
 

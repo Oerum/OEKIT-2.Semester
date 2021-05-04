@@ -53,7 +53,7 @@ def total_amount():
         sales_d.append(float(s))
 
 
-    return render_template('tabel_løb.html', header=header, datasæt=sum, dates=json.dumps(dates_d))
+    return render_template('tabel_løb.html', header=header, datasæt=sum, date=dates_d, sales=sales_d)
 
 
 @app.errorhandler(404)
