@@ -1,6 +1,7 @@
 import mysql.connector
 from flask import *
 import numpy as np
+import json
 
 try:
   mydb = mysql.connector.connect(
@@ -30,7 +31,7 @@ def total_amount():
     mycursor.execute(sql)
     myresult = mycursor.fetchall()
 
-    #header
+    #header#
     header = ["Total Sum of Sales"]
 
     #Nested loop to remove irrelevant decimals and symbols#
@@ -40,26 +41,27 @@ def total_amount():
         sum.append(t)
 
 
-    return render_template('tabel_løb.html', header=header, datasæt=sum)
+    #Total_Sales for each element
+    sql = "SELECT OrderDate, sum(Quantity*UnitPrice) FROM salgsordre GROUP BY  OrderDate"
+    mycursor.execute(sql)
+    myresult = mycursor.fetchall()
+
+    dates_d = []
+    sales_d = []
+    for d, s in myresult:
+        dates_d.append(str(d))
+        sales_d.append(float(s))
 
 
-@app.route("/", methods=['GET', 'POST'])
-def index():
-    if request.method == 'POST':
-        if request.form.get('Home') == 'Home':
-            return redirect(url_for('root'))
-
-        elif request.form.get('Total sum') == 'Total sum':
-            return redirect(url_for('total_amount'))
-
-        elif  request.form.get('action3') == 'Zealand':
-            return redirect(url_for('zealand'))
+    return render_template('tabel_løb.html', header=header, datasæt=sum, dates=json.dumps(dates_d))
 
 
-    return render_template("tabel_løb.html")
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('home.html'), 404
 
 
-if __name__ == '__name__':
-  app.run(debug=True)
-app.run(port=5000)
+if __name__ == '__main__':
+    app.run(debug=True, host = "192.168.0.44", port = 5000)
+
 
