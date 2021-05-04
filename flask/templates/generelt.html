@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block title %} Generelt {% endblock %}
+{% block body%}
+
+<p1 id="p1-generelt">Best suited for viewing on desktop</p1>
+
+<!--Linechart-->
+<div>
+  <div>
+    <canvas id="line_sales_period"></canvas>
+  </div>
+
+  <div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type=text/javascript src="{{url_for('static', filename='js/javascript.js') }}"></script>
+    <script>
+
+    const labels = {{date | safe }}
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'Sales for each period',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: {{ sales | safe }}
+      }]
+    };
+
+    const config = {
+      type: 'line',
+      data,
+      options: {
+          responsive: true,
+          maintainAspectRatio: false
+                }
+
+    };
+
+      var myChart = new Chart(
+        document.getElementById('line_sales_period', ),
+        config
+      );
+    </script>
+  </div>
+</div>
+
+
+
+<!--Tables-->
+<div>
+      <table class="table table-hover table-striped">
+    <thead>
+      <tr>
+          <tr>
+          {% for s in header %}
+              <th>{{ s }}</th>
+          {% endfor %}
+          </tr>
+      </tr>
+    </thead>
+    <tbody>
+          <tr>
+          {% for s in datasæt %}
+              <td>{{ s }}</td>
+          {% endfor %}
+          </tr>
+    </tbody>
+      </table>
+
+
+  <!--Table2-->
+  <p1 id="p2-generelt">Salg i Dkk for hver given periode:</p1>
+
+
+    <div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+    <thead>
+          <tr id="generel_header">
+          {% for s in date %}
+              <th>{{ s }}</th>
+          {% endfor %}
+          </tr>
+      </tr>
+    </thead>
+    <tbody>
+          <tr id="generel_row">
+          {% for s in sales %}
+              <td>{{ s }}</td>
+          {% endfor %}
+          </tr>
+    </tbody>
+    </table>
+    </div>
+</div>
+
+
+<!--h1-->
+<h1>test</h1>
+<p1>test</p1>
+
+
+{% endblock %}
+
+

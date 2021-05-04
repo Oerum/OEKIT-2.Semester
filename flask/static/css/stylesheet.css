@@ -1,0 +1,44 @@
+body {
+    background: white;
+  }
+
+#line_sales_period {
+    height:500px;
+    content:block;
+    margin-left: 2px
+
+}
+
+
+#p1-generelt {
+    display: block;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+    position: relative; top: 70px;
+    }
+
+#p2-generelt {
+    display: block;
+    margin-top: -18px;
+    text-align: center;
+    font-weight: bold;
+    /*margin-left: 8px;*/
+    text-decoration: underline;
+    margin-bottom: 8px;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    white-space: nowrap;
+}
+
+#generel_header {
+    font-size: 12px;
+}
+
+#generel_row {
+    font-size: 14px;
+}
