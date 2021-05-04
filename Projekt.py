@@ -23,10 +23,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
+  return redirect(url_for('home'))
+
+@app.route('/home')
+def home():
   return render_template('home.html')
 
-@app.route('/total')
-def total_amount():
+@app.route('/generelt')
+def generel():
     sql = "SELECT sum(Quantity*UnitPrice) FROM salgsordre"
     mycursor.execute(sql)
     myresult = mycursor.fetchall()
@@ -53,7 +57,29 @@ def total_amount():
         sales_d.append(float(s))
 
 
-    return render_template('tabel_løb.html', header=header, datasæt=sum, date=dates_d, sales=sales_d)
+    return render_template('generelt.html', header=header, datasæt=sum, date=dates_d, sales=sales_d)
+
+@app.route('/erhvervsøkonomi')
+def erhversøkonomi():
+  return render_template('erhvervsøkonomi.html')
+
+@app.route('/projektledelse')
+def projektledelse():
+  return render_template('projektledelse.html')
+
+
+@app.route('/makroøkonomi')
+def makroøkonomi():
+  return render_template('makroøkonomi.html')
+
+
+@app.route('/supplychain')
+def Supply_Chain():
+  return render_template('supplychain.html')
+
+@app.route('/systemudvikling')
+def Systemudvikling():
+  return render_template('systemudvikling.html')
 
 
 @app.errorhandler(404)
