@@ -3,7 +3,9 @@
 {% block title %} Generelt {% endblock %}
 {% block body%}
 
-<p1 id="p1-generelt">Best suited for viewing on desktop</p1>
+<div id="p1-generelt">
+  <p1>Bedst egnet til desktop</p1>
+</div>
 
 <!--Linechart-->
 <div>
@@ -15,7 +17,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type=text/javascript src="{{url_for('static', filename='js/javascript.js') }}"></script>
     <script>
-
     const labels = {{date | safe }}
     const data = {
       labels: labels,
@@ -49,48 +50,46 @@
 
 <!--Tables-->
 <div>
-      <table class="table table-hover table-striped">
-    <thead>
-      <tr>
-          <tr>
-          {% for s in header %}
-              <th>{{ s }}</th>
-          {% endfor %}
-          </tr>
-      </tr>
-    </thead>
-    <tbody>
-          <tr>
-          {% for s in datasæt %}
-              <td>{{ s }}</td>
-          {% endfor %}
-          </tr>
-    </tbody>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+            <tr>
+            {% for s in header %}
+                <th>{{ s }}</th>
+            {% endfor %}
+            </tr>
+        </tr>
+      </thead>
+      <tbody>
+            <tr>
+            {% for s in datasæt %}
+                <td>{{ s }}</td>
+            {% endfor %}
+            </tr>
+      </tbody>
       </table>
 
 
   <!--Table2-->
   <p1 id="p2-generelt">Salg i Dkk for hver given periode:</p1>
-
-
     <div class="table-responsive">
-    <table class="table table-hover table-striped table-bordered">
-    <thead>
-          <tr id="generel_header">
-          {% for s in date %}
-              <th>{{ s }}</th>
-          {% endfor %}
+      <table class="table table-hover table-striped table-bordered">
+        <thead>
+              <tr id="generel_header">
+              {% for s in date %}
+                  <th>{{ s }}</th>
+              {% endfor %}
+              </tr>
           </tr>
-      </tr>
-    </thead>
-    <tbody>
-          <tr id="generel_row">
-          {% for s in sales %}
-              <td>{{ s }}</td>
-          {% endfor %}
-          </tr>
-    </tbody>
-    </table>
+        </thead>
+        <tbody>
+              <tr id="generel_row">
+              {% for s in sales %}
+                  <td>{{ s }}</td>
+              {% endfor %}
+              </tr>
+        </tbody>
+      </table>
     </div>
 </div>
 

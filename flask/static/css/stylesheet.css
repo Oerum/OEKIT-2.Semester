@@ -1,22 +1,30 @@
+.logo{
+    height: auto;
+    width: auto;
+    max-height: 46px;
+    max-width: 46px;
+
+}
+
 body {
     background: white;
   }
-
-#line_sales_period {
-    height:500px;
-    content:block;
-    margin-left: 2px
-
-}
 
 
 #p1-generelt {
     display: block;
     text-align: center;
-    text-decoration: underline;
     font-weight: bold;
-    position: relative; top: 70px;
-    }
+    text-decoration: underline;
+
+}
+
+#line_sales_period {
+    height:500px;
+    content:block;
+    margin-left: 2px;
+
+}
 
 #p2-generelt {
     display: block;
@@ -29,6 +37,7 @@ body {
 }
 
 .table {
+
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
@@ -41,4 +50,24 @@ body {
 
 #generel_row {
     font-size: 14px;
+}
+
+#table_systemudvikling_userstory {
+    float:left;
+    margin-top: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    white-space: nowrap;
+}
+
+#table_systemudvikling_usercase {
+    float: right;
+    margin-top: 5px;
+    text-align: center;
+    width: 50%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    white-space: nowrap;
 }
