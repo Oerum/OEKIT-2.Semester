@@ -1,7 +1,6 @@
 import mysql.connector
 from flask import *
 import numpy as np
-import json
 
 try:
   mydb = mysql.connector.connect(
@@ -61,7 +60,7 @@ def erhversøkonomi():
 
 @app.route('/projektledelse')
 def projektledelse():
-  return render_template('projektledelse.html')
+  return render_template('projektledelse.html',)
 
 
 @app.route('/makroøkonomi')
@@ -75,7 +74,7 @@ def Supply_Chain():
 
 @app.route('/systemudvikling')
 def Systemudvikling():
-  return render_template('systemudvikling.html')
+    return render_template('systemudvikling.html')
 
 
 @app.errorhandler(404)

@@ -1,6 +1,7 @@
 import mysql.connector
 from flask import *
 import numpy as np
+from xlsx2html import xlsx2html
 
 try:
   mydb = mysql.connector.connect(
@@ -17,15 +18,11 @@ except mysql.connector.errors.ProgrammingError:
   print(f"Error connecting, check credentials")
 
 
-sql = "SELECT OrderDate, sum(Quantity*UnitPrice) FROM salgsordre GROUP BY  OrderDate"
-mycursor.execute(sql)
-myresult = mycursor.fetchall()
+out_stream = xlsx2html('/Users/filiporum-petersen/Downloads/Gantt-kort.xlsx')
+out_stream.seek(0)
+print(out_stream.read())
 
-dates = []
-sales_d = []
-for d, s in myresult:
-    dates.append(d)
-    sales_d.append(float(s))
 
-print(sales_d)
+
+
 

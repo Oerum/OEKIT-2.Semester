@@ -12,8 +12,6 @@ body {
 
 
 #p1-generelt {
-    display: block;
-    text-align: center;
     font-weight: bold;
     text-decoration: underline;
 
@@ -29,19 +27,10 @@ body {
 #p2-generelt {
     display: block;
     margin-top: -18px;
-    text-align: center;
     font-weight: bold;
     /*margin-left: 8px;*/
     text-decoration: underline;
     margin-bottom: 8px;
-}
-
-.table {
-
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
-    white-space: nowrap;
 }
 
 #generel_header {
@@ -55,19 +44,29 @@ body {
 #table_systemudvikling_userstory {
     float:left;
     margin-top: 5px;
-    text-align: center;
-    width: 50%;
+    width: 45%;
     max-width: 100%;
     margin-bottom: 20px;
     white-space: nowrap;
+    margin-left: 2.5%;
 }
 
 #table_systemudvikling_usercase {
     float: right;
     margin-top: 5px;
-    text-align: center;
-    width: 50%;
+    width: 45%;
     max-width: 100%;
     margin-bottom: 20px;
     white-space: nowrap;
+    margin-right: 5%;
+}
+
+
+#chart_div {
+    top: 0;
+    margin-left: 5%;
+    width:90%;
+    height:437px;
+    overflow:scroll;
+
 }
