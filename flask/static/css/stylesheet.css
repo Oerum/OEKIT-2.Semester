@@ -1,3 +1,4 @@
+/* Page Wide*/
 .logo{
     height: auto;
     width: auto;
@@ -10,8 +11,12 @@ body {
     background: white;
   }
 
-p.solid {border-style: solid;}
 
+.navbar{
+    border-bottom: 10px solid rgb(255, 0, 0);
+}
+
+/* Generelt-html */
 #p1-generelt {
     font-weight: bold;
     text-decoration: underline;
@@ -42,6 +47,7 @@ p.solid {border-style: solid;}
     font-size: 14px;
 }
 
+/* Systemudvikling-html */
 #table_systemudvikling_userstory {
     float:left;
     margin-top: 5px;
@@ -62,7 +68,7 @@ p.solid {border-style: solid;}
     margin-right: 5%;
 }
 
-
+/* Projektledelse */
 #chart_div {
     top: 0;
     margin-left: 5%;
@@ -71,5 +77,33 @@ p.solid {border-style: solid;}
     overflow:scroll;
 
 }
+
+/* Home-html */
+#home_top_logo {
+    margin-left:auto; 
+    margin-right:auto; 
+    display:block; 
+    max-height:30px; 
+    width:auto; 
+    margin-top:5px;
+}
+#paragraph_left {
+    border:solid;
+    border-color:white;
+    float:left;
+    margin-left:2%;
+    margin-top:2%;
+
+}
+
+#paragraph_right {
+    border:solid;
+    border-color:white;
+    float:right;
+    margin-right:2%;
+    margin-top:2%;
+
+}
+
 
 
