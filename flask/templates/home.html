@@ -3,7 +3,7 @@
 {%block meta%}{%endblock%}
 
 {%block link_script%}{%endblock%}
-{% block title %}Home{% endblock %}
+{% block title %}Home{% endblock title %}
 
 
 
@@ -12,12 +12,12 @@
 {% block body %}
 <img id="home_top_logo"src="static/ico/proshop.png" class="img-fluid mx-auto" alt="..." >
 
-<div id="paragraph_left">Dette er et semester projekt<br>
-                        testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttes
+<div>
+    <p id="paragraph_left" class="float-start">Dette er vores semester projekt -- kom gerne med ideer til hvilke database udtræk etc vi kan foretage os:))))</p>
 </div>
-<div id="paragraph_right">testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttes<br>lolololololol </div>
-<div style="clear:both;"></div>
 
-{%block scriptbottom%}{%endblock%}
-{% endblock%}
+
+
+{%block scriptbottom%}{% endblock %}
+{% endblock body%}
 
