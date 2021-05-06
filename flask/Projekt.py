@@ -1,10 +1,9 @@
 import mysql.connector
 from flask import *
-import numpy as np
 
 try:
   mydb = mysql.connector.connect(
-    host="boundsoul19375.ddns.net",
+    host="localhost", #boundsoul19375.ddns.net # Change settings to suit your preference
     port=19375,
     user="Filip",
     password="test1234",

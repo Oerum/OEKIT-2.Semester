@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {%block meta%}{%endblock%}
 
-    <link rel="icon" href="data:,">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block meta%}{%endblock%}
+    <link rel="icon" href="data:,"> <!--favicon bypass-->
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css') }}" /> <!--Added Bootstrap-->
     <link rel="stylesheet" href="{{url_for('static', filename='css/stylesheet.css') }}" />
 
@@ -13,28 +13,32 @@
 
     <title>{% block title%}{% endblock %}</title>
 </head>
-<body style="{% block body_style %} {% endblock %}">
+  <body style="{% block body_style %} {% endblock %}">
+
     <!--Navbar shown on all pages-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/home"><img src="static/ico/mstile-310x310.png" alt="" width="30" height="24" class="logo"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="/generelt">Generelt</a>
-        <a class="nav-link active" href="/erhvervsøkonomi">Erhvervsøkonomi</a>
-        <a class="nav-link active" href="/projektledelse">Projektledelse</a>
-        <a class="nav-link active" href="/makroøkonomi">Makroøkonomi</a>
-        <a class="nav-link active" href="/supplychain">Supply chain</a>
-        <a class="nav-link active" href="/systemudvikling">Systemudvikling</a>
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/home"><img src="static/ico/mstile-310x310.png" alt="" width="30" height="24" class="logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" aria-current="page" href="/generelt">Generelt</a>
+            <a class="nav-link active" href="/erhvervsøkonomi">Erhvervsøkonomi</a>
+            <a class="nav-link active" href="/projektledelse">Projektledelse</a>
+            <a class="nav-link active" href="/makroøkonomi">Makroøkonomi</a>
+            <a class="nav-link active" href="/supplychain">Supply chain</a>
+            <a class="nav-link active" href="/systemudvikling">Systemudvikling</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</nav>
-    <!--Navbar-->
+    </nav>
+
+    <!--Layout Bar-->
+    <p class="solid" style="color:red;"></p>
+
 
 
 
@@ -47,7 +51,6 @@
 </footer>
 
 
-    <script type="text/javascript" src="{{url_for('static', filename='js/javascript.js') }}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 
     {%block scriptbottom%}{%endblock%}

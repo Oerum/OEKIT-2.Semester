@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 {% block link_script %}
+<!--Gantt Chart JS-->
+<div>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load('current', {'packages':['gantt']});
@@ -57,16 +59,17 @@
 
     }
   </script>
-
+</div>
 {% endblock %}
 
 {% block title %}Projektledelse{% endblock %}
 
-{% block body_style %} background:#808080 {% endblock %}
+{% block body_style %} background:#FBFCFC {% endblock %}
 
 {% block body %}
-<iframe width="90%" height="813px" frameborder="1" scrolling="no" style="margin-left:5%" src="https://onedrive.live.com/embed?resid=FEDB03DA97587CD3%217974&authkey=%21AH9THESNM2CSrZI&em=2&wdAllowInteractivity=False&ActiveCell='Projektplanl%C3%A6gger'!B1&Item='Projektplanl%C3%A6gger'!B1%3ABO23&wdHideGridlines=True&wdDownloadButton=False&wdInConfigurator=True"></iframe>
-
+<!--Embed from onedrive-->
+<iframe width="90%" height="813px" frameborder="1" scrolling="no" style="margin-left:5%; margin-top:-15px;" src="https://onedrive.live.com/embed?resid=FEDB03DA97587CD3%217974&authkey=%21AH9THESNM2CSrZI&em=2&wdAllowInteractivity=False&ActiveCell='Projektplanl%C3%A6gger'!B1&Item='Projektplanl%C3%A6gger'!B1%3ABO23&wdHideGridlines=True&wdDownloadButton=False&wdInConfigurator=True"></iframe>
+<!--Gantt Chat - if remove-->
 <div id="chart_div"></div>
 
 

@@ -10,6 +10,7 @@ body {
     background: white;
   }
 
+p.solid {border-style: solid;}
 
 #p1-generelt {
     font-weight: bold;
@@ -70,3 +71,5 @@ body {
     overflow:scroll;
 
 }
+
+
