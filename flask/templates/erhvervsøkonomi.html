@@ -9,26 +9,26 @@
 
 {% block body %}
 
-
-<div id="erhverv_table_nip_div" class="table-responsive text-center">
-    <table id="erhverv_table_nip" class="table table-striped table-hover text-center table-bordered">
-      <thead>
-        <tr>
-        <th class="text-decoration-underline">Produkt</th>
-        <th class="text-decoration-underline">Id</th>
-        <th class="text-decoration-underline">Dækningsbidrag</th>
-        </tr>
-      </thead>
-      <tbody>
-            {% for i, n, p in id_name_profit%}
-            <tr>
-            <td>{{n}}</td>
-            <td>{{i}}</td>
-            <td>{{p}}</td>
-            </tr>
-            {% endfor %}
-      </tbody>
-      </table>
+<div  class="erhverv_table_nip_div table-responsive text-center">
+      <table class="table table-striped table-hover text-center table-bordered table-sm">
+        <thead>
+          <tr>
+          <th class="text-decoration-underline">Produkt</th>
+          <th class="text-decoration-underline">Id</th>
+          <th class="text-decoration-underline">Dækningsbidrag</th>
+          </tr>
+        </thead>
+        <tbody>
+              {% for i, n, p in id_name_profit%}
+              <tr>
+              <td>{{n}}</td>
+              <td>{{i}}</td>
+              <td>{{p}}</td>
+              </tr>
+              {% endfor %}
+        </tbody>
+        </table>
+</div>
 
 
 {%block scriptbottom%}{%endblock scriptbottom%}

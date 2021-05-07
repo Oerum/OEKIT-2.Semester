@@ -26,10 +26,50 @@ body {
     text-align: center;
     }
 
+#button {
+    display: inline-block;
+    background-color: #ffcf9c;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    border-radius: 100px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    transition: background-color .3s,
+        opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    }
+#button::after {
+    content: "\f077";
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 2em;
+    line-height: 50px;
+    color: #fff;
+}
+#button:hover {
+    cursor: pointer;
+    background-color: #333;
+}
+#button:active {
+    background-color: #555;
+}
+#button.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
 /* Generelt-html */
 #p1-generelt {
     font-weight: bold;
     text-decoration: underline;
+    font-family: Arial, Helvetica, sans-serif;
 
 }
 
@@ -40,20 +80,25 @@ body {
 
 }
 
-#p2-generelt {
-    display: block;
-    margin-top: -18px;
-    font-weight: bold;
-    /*margin-left: 8px;*/
-    text-decoration: underline;
-    margin-bottom: 8px;
+.table_sum_sales {
+    margin-left: 1px;
+    margin-right: 1px;
 }
 
-#generel_header {
+#p2-generelt {
+    display: block;
+    margin-top: -5px;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#table2_header {
     font-size: 12px;
 }
 
-#generel_row {
+#table2_row {
     font-size: 14px;
 }
 
@@ -88,34 +133,45 @@ body {
 
 /* Home-html */
 #home_top_logo {
-    margin-left:auto;
-    margin-right:auto;
     display:block;
-    max-height:30px;
     width:auto;
+    margin-left:1100px;
+    max-height:30px;
     margin-top:5px;
 }
 
-#paragraph_left {
+.paragraph_left {
     border:solid;
     border-color:white;
-    margin-left:2%;
-    
-    margin-top:2%;
+    margin-left:20%;
+    margin-right: 20%;
+    margin-top:3%;
     max-width: 100%;
     word-wrap: break-word;
 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #36344d;
+    letter-spacing: .3px;
 }
-/*Erhvervsøkonomi*/
-#erhverv_table_nip_div {
-    margin-bottom: 60%;
+.paragraph_left h1 {
+    text-align: center;
+    margin-left:-20px;
 }
 
-#erhverv_table_nip {
-    width:90%;
-    margin-left:5%;
-    height:auto;
+/*Erhvervsøkonomi*/
+.erhverv_table_nip_div {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-top: 1%;
+    overflow-y: auto;
+    max-height: 500px;
+
 }
+
+
 
 
 
