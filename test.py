@@ -18,9 +18,22 @@ except mysql.connector.errors.ProgrammingError:
   print(f"Error connecting, check credentials")
 
 
-out_stream = xlsx2html('/Users/filiporum-petersen/Downloads/Gantt-kort.xlsx')
-out_stream.seek(0)
-print(out_stream.read())
+
+sql = "SELECT ProductId, Name ,profitrate FROM produkter"
+mycursor.execute(sql)
+myresult = mycursor.fetchall()
+
+id = []
+name = []
+profit = []
+for p, n, r in myresult:
+  id.append(p)
+  name.append(n)
+  profit.append(r)
+
+for i in id:
+  print(i)
+
 
 
 

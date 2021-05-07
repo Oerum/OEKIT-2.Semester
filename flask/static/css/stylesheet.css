@@ -106,7 +106,16 @@ body {
     word-wrap: break-word;
 
 }
+/*Erhvervsøkonomi*/
+#erhverv_table_nip_div {
+    margin-bottom: 60%;
+}
 
+#erhverv_table_nip {
+    width:90%;
+    margin-left:5%;
+    height:auto;
+}
 
 
 
