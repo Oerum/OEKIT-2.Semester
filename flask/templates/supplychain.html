@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {%block meta%}{%endblock%}
-{% block link_script %}{% endblock %}
+{% block link_script %}
+
+{% endblock %}
 
 {% block title %}Supply Chain{% endblock %}
 
@@ -9,7 +11,37 @@
 
 {% block body %}
 
-
+<div  class="supply_table_div table-responsive text-center">
+      <table class="table table-striped table-hover table-bordered table-sm">
+        <thead>
+          <tr>
+          <th class="text-decoration-underline">ProduktID</th>
+          <th class="text-decoration-underline">Dato</th>
+          <th class="text-decoration-underline">Name</th>
+          <th class="text-decoration-underline">Fragtnr</th>
+          <th class="text-decoration-underline">Antal</th>
+          <th class="text-decoration-underline">Indkøbspris</th>
+          <th class="text-decoration-underline">SUM</th>
+          </tr>
+        </thead>
+        <tbody>
+              {% for i, d, n, f, a, p, s in data%}
+              <tr>
+              <td>{{i}}</td>
+              <td>{{d}}</td>
+              <td>{{n}}</td>
+              <td>{{f}}</td>
+              <td>{{a}}</td>
+              <td>{{p}}</td>
+              <td>{{s}}</td>
+              </tr>
+              {% endfor %}
+        </tbody>
+        </table>
+</div>
+<div class="supply_paragraph">
+<p>Der er i alt indkøbt for: {{total_sum}}.- for hele database perioden<br>Dette er sammenlignet med salget for hele database perioden: {{sum_sales[0]}}.-<br>Hvilket giver et samlet overskud på: {{total_rev}}.-</p>
+</div>
 
 
 

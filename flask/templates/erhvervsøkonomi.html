@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {%block meta%}{%endblock meta%}
-{% block link_script %}{% endblock link_script %}
+{% block link_script %}
+
+{% endblock link_script %}
 
 {% block title %}Erhvervsøkonomi{% endblock title %}
 
@@ -28,6 +30,130 @@
               {% endfor %}
         </tbody>
         </table>
+</div>
+
+
+
+<div >
+  <div class="line_chart">
+    <canvas id="city_post"></canvas>
+  </div>
+
+  <div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    const labels = {{post | safe }}
+      const data = {
+        labels,
+        datasets: [{
+          label: 'Salg / Postnr',
+          data: {{city}},
+          fill: false,
+          borderColor: 'rgb(255, 99, 132)',
+          tension: 0.1,
+
+          backgroundColor: ['rgb(148,91,4)',
+                            'rgb(79,231,149)',
+                            'rgb(206,119,95)',
+                            'rgb(153,209,1)',
+                            'rgb(160,178,194)',
+                            'rgb(66,244,109)',
+                            'rgb(9,88,50)',
+                            'rgb(183,55,116)',
+                            'rgb(105,18,169)',
+                            'rgb(11,38,76)',
+                            'rgb(31,27,207)',
+                            'rgb(137,202,104)',
+                            'rgb(159,49,13)',
+                            'rgb(96,5,15)',
+                            'rgb(135,249,83)',
+                            'rgb(45,255,50)',
+                            'rgb(155,145,7)',
+                            'rgb(111,55,126)',
+                            'rgb(255,203,130)',
+                            'rgb(183,162,171)',
+                            'rgb(135,28,147)',
+                            'rgb(227,81,40)',
+                            'rgb(148,143,195)',
+                            'rgb(141,229,216)',
+                            'rgb(113,231,33)',
+                            'rgb(77,116,11)',
+                            'rgb(246,194,51)',
+                            'rgb(117,242,223)',
+                            'rgb(181,226,137)',
+                            'rgb(65,128,216)',
+                            'rgb(100,176,63)',
+                            'rgb(19,152,63)',
+                            'rgb(130,91,114)',
+                            'rgb(254,59,69)',
+                            'rgb(250,196,168)',
+                            'rgb(22,144,163)',
+                            'rgb(75,211,169)',
+                            'rgb(22,78,174)',
+                            'rgb(209,190,92)',
+                            'rgb(51,16,55)',
+                            'rgb(173,126,118)',
+                            'rgb(209,55,154)',
+                            'rgb(225,111,93)',
+                            'rgb(108,221,251)',
+                            'rgb(179,56,64)',
+                            'rgb(131,5,124)',
+                            'rgb(129,148,155)',
+                            'rgb(43,47,249)',
+                            'rgb(56,1,212)',
+                            'rgb(2,81,249)',
+                            'rgb(238,211,46)',
+                            'rgb(16,176,68)',
+                            'rgb(105,56,119)',
+                            'rgb(113,247,231)',
+                            'rgb(33,84,157)',
+                            'rgb(88,80,60)',
+                            'rgb(24,157,157)',
+                            'rgb(182,64,109)',
+                            'rgb(168,67,239)',
+                            'rgb(122,48,36)',
+                            'rgb(102,215,219)',
+                            'rgb(55,41,49)',
+                            'rgb(105,129,124)',
+                            'rgb(50,241,13)',
+                            'rgb(142,135,169)',
+                            'rgb(5,237,188)',
+                            'rgb(147,120,52)',
+                            'rgb(42,94,181)',
+                            'rgb(223,131,115)',
+                            'rgb(243,242,13)',
+                            'rgb(240,134,186)',
+                            'rgb(172,189,200)',
+                            'rgb(187,55,152)',
+                            'rgb(72,50,93)',
+                            'rgb(9,72,32)',
+                            'rgb(167,168,27)',
+                            'rgb(36,18,37)',
+                            'rgb(38,155,125)',
+                            'rgb(244,160,56)',
+                            'rgb(12,38,199)',
+                            'rgb(244,226,156)',
+                            'rgb(133,3,17)',
+                            'rgb(96,88,80)',
+                            'rgb(113,36,126)',]
+        }]
+      };
+
+      const config = {
+        type: 'line',
+        data: data,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      };
+
+      var myChart = new Chart(
+        document.getElementById('city_post', ),
+        config
+      );
+    </script>
+  </div>
 </div>
 
 

@@ -1,5 +1,6 @@
 import mysql.connector
 from flask import *
+import numpy as np
 
 try:
   mydb = mysql.connector.connect(
@@ -40,7 +41,7 @@ try:
       sum = []
       for v in myresult:
         for t in v:
-          sum.append(t)
+          sum.append("{:,}".format(t))
       #Total_Sales for each element
       sql = "SELECT OrderDate, sum(Quantity*UnitPrice) FROM salgsordre GROUP BY  OrderDate"
       mycursor.execute(sql)
@@ -50,7 +51,7 @@ try:
       sales_d = []
       for d, s in myresult:
           dates_d.append(str(d))
-          sales_d.append(int(s))
+          sales_d.append("{:,}".format(s))
 
       return render_template('generelt.html', header=header, datasæt=sum, date=dates_d, sales=sales_d)
 
@@ -68,9 +69,20 @@ try:
         id.append(p)
         name.append(n)
         profit.append(r)
+      #Find postalcode and city to determine which area purchases most
+      sql = "SELECT postnr, COUNT(city) FROM kunder group BY postnr ORDER by postnr "
+      mycursor.execute(sql)
+      myresult = mycursor.fetchall()
+
+      post = []
+      city = []
+
+      for p, c in myresult:
+        post.append(p)
+        city.append(c)
 
 
-      return render_template('erhvervsøkonomi.html', id_name_profit=zip(id, name, profit))
+      return render_template('erhvervsøkonomi.html', id_name_profit=zip(id, name, profit), city=city, post=post)
 
 
 
@@ -86,7 +98,46 @@ try:
 
   @app.route('/supplychain')
   def Supply_Chain():
-    return render_template('supplychain.html')
+
+    sql = "SELECT indkøbsordre.Productid, Date, name, Freightno, amount, produkter.PurchasePrice, amount*produkter.PurchasePrice FROM indkøbsordre, produkter Where indkøbsordre.ProductId = produkter.ProductId ORDER BY indkøbsordre.ProductId DESC;"
+
+    mycursor.execute(sql)
+    myresult = mycursor.fetchall()
+
+    productid = []
+    date = []
+    name = []
+    freightno = []
+    amount = []
+    purchaseprice = []
+    summ = []
+    for i,d,n,f,a,p,s in myresult:
+      productid.append(i)
+      date.append(d)
+      name.append(n)
+      freightno.append(f)
+      amount.append(a)
+      purchaseprice.append(p)
+      summ.append(s)
+
+    total_sum = ("{:,}".format(np.sum(summ)))
+    total_sum_cal = sum(summ)
+
+    sql = "SELECT sum(Quantity*UnitPrice) FROM salgsordre"
+    mycursor.execute(sql)
+    myresult = mycursor.fetchall()
+
+    sum_sales = []
+    sum_sales_cal = []
+    for v in myresult:
+      for t in v:
+        sum_sales.append("{:,}".format(t))
+        sum_sales_cal.append(t)
+
+    total_rev = ("{:,}".format((sum_sales_cal[0]-total_sum_cal)))
+
+    return render_template('supplychain.html', data=zip(productid,date,name,freightno,amount,purchaseprice,summ), total_sum=total_sum,sum_sales=sum_sales, total_rev=total_rev)
+
 
   @app.route('/systemudvikling')
   def Systemudvikling():
