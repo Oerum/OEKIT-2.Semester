@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {%block meta%}{%endblock%}
     <link rel="icon" href="data:,"> <!--favicon bypass-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.24/r-2.2.7/datatables.min.css"/> <!--Added datatable-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.24/af-2.3.6/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/cr-1.5.3/fh-3.1.8/kt-2.6.1/r-2.2.7/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.3/datatables.min.css"/>  <!--Added datatable-->
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css') }}" /> <!--Added Bootstrap-->
     <link rel="stylesheet" href="{{url_for('static', filename='css/stylesheet.css') }}" /> <!--Added Own Css-->
     {%block link_script%}{%endblock%}
@@ -45,15 +45,22 @@
     {% endblock %}
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!--Added Jquery JS library-->
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/r-2.2.7/datatables.min.js"></script> <!--Added datatable-->
+
+    <footer>
+    {%block footer%}{%endblock footer%}
+    </footer>
+    <div class="footer">
+    </div>
+    {%block scriptbottom%}{%endblock%}
+    <!--Added Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!---->
+    <!--Added Datatable-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.24/af-2.3.6/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/cr-1.5.3/fh-3.1.8/kt-2.6.1/r-2.2.7/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.3/datatables.min.js"></script>
+    <!---->
     <script type="text/javascript" src="{{url_for('static', filename='js/javascript.js') }}"></script>
     <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-    {%block scriptbottom%}{%endblock%}
-
-
-
-<div class="footer">
-</div>
 </body>
 </html>
