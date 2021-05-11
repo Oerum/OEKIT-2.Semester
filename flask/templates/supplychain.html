@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 
 {%block meta%}{%endblock%}
-{% block link_script %}
-
-{% endblock %}
+{% block link_script %}{% endblock %}
 
 {% block title %}Supply Chain{% endblock %}
 
@@ -12,7 +10,7 @@
 {% block body %}
 
 <div  class="supply_table_div table-responsive text-center">
-      <table class="table table-striped table-hover table-bordered table-sm">
+      <table id="supply_table" class="table table-striped table-hover table-bordered table-sm">
         <thead>
           <tr>
           <th class="text-decoration-underline">ProduktID</th>
@@ -40,7 +38,11 @@
         </table>
 </div>
 <div class="supply_paragraph">
-<p>Der er i alt indkøbt for: {{total_sum}}.- for hele database perioden<br>Dette er sammenlignet med salget for hele database perioden: {{sum_sales[0]}}.-<br>Hvilket giver et samlet overskud på: {{total_rev}}.-</p>
+  <p>
+    Der er i alt indkøbt for: {{total_sum}}.- for hele database perioden<br>
+    Dette er sammenlignet med salget for hele database perioden: {{sum_sales[0]}}.-<br>
+    Hvilket giver et samlet overskud på: {{total_rev}}.- for databaseperioden.
+  </p>
 </div>
 
 

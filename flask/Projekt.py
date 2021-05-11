@@ -47,13 +47,15 @@ try:
       mycursor.execute(sql)
       myresult = mycursor.fetchall()
 
+      sales_clean = []
       dates_d = []
       sales_d = []
       for d, s in myresult:
           dates_d.append(str(d))
           sales_d.append("{:,}".format(s))
+          sales_clean.append(int(s))
 
-      return render_template('generelt.html', header=header, datasæt=sum, date=dates_d, sales=sales_d)
+      return render_template('generelt.html', header=header, datasæt=sum, date=dates_d, sales=sales_d, sales_clean=sales_clean)
 
   @app.route('/erhvervsøkonomi')
   def erhversøkonomi():
@@ -82,11 +84,11 @@ try:
         city.append(c)
 
 
-      return render_template('erhvervsøkonomi.html', id_name_profit=zip(id, name, profit), city=city, post=post)
+      return render_template('erhvervsøkonomi.html', id_name_profit=zip(id, name, profit), city=city, post=post, post_sale=zip(post,city))
 
 
 
-  @app.route('/projektledelse')
+  @app.route('/projektledelse') #Takes a while to load page due to onedrive embedding#
   def projektledelse():
     return render_template('projektledelse.html',)
 
@@ -99,7 +101,7 @@ try:
   @app.route('/supplychain')
   def Supply_Chain():
 
-    sql = "SELECT indkøbsordre.Productid, Date, name, Freightno, amount, produkter.PurchasePrice, amount*produkter.PurchasePrice FROM indkøbsordre, produkter Where indkøbsordre.ProductId = produkter.ProductId ORDER BY indkøbsordre.ProductId DESC;"
+    sql = "SELECT indkøbsordre.Productid, Date, name, Freightno, amount, produkter.PurchasePrice, amount*produkter.PurchasePrice FROM indkøbsordre, produkter Where indkøbsordre.ProductId = produkter.ProductId ORDER BY Date DESC;"
 
     mycursor.execute(sql)
     myresult = mycursor.fetchall()

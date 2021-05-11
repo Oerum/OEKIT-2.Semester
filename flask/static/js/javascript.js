@@ -14,6 +14,18 @@ btn.on('click', function(e) {
   $('html, body').animate({scrollTop:0}, '300');
 });
 
+/* Supply_table convert to datatable*/
+$(document).ready(function() {
+  $('#supply_table').DataTable();
+} );
 
-/* Search Bar */
+/* table_erhverv convert to datatable*/
+$(document).ready(function() {
+  $('#table_erhverv').DataTable();
+} );
+
+/* erhvervs_post_sales convert to datatable*/
+$(document).ready(function() {
+  $('#post_sales').DataTable();
+} );
 

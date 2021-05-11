@@ -12,7 +12,7 @@
 {% block body %}
 
 <div  class="erhverv_table_nip_div table-responsive text-center">
-      <table class="table table-striped table-hover table-bordered table-sm">
+      <table id ="table_erhverv" class="table table-striped table-hover table-bordered table-sm">
         <thead>
           <tr>
           <th class="text-decoration-underline">Produkt</th>
@@ -154,6 +154,25 @@
       );
     </script>
   </div>
+</div>
+
+<div  class="erhverv_table_post_sales_div table-responsive text-center">
+      <table id="post_sales" class="table table-striped table-hover table-bordered table-sm">
+        <thead>
+          <tr>
+          <th class="text-decoration-underline">Postnr</th>
+          <th class="text-decoration-underline">Salg</th>
+          </tr>
+        </thead>
+        <tbody>
+              {% for p, c in post_sale%}
+              <tr>
+              <td>{{p}}</td>
+              <td>{{c}}</td>
+              </tr>
+              {% endfor %}
+        </tbody>
+        </table>
 </div>
 
 

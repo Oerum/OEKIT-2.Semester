@@ -9,7 +9,7 @@ import numpy as np
 
 try:
   mydb = mysql.connector.connect(
-    host="boundsoul19375.ddns.net",
+    host="localhost",
     port=19375,
     user="Filip",
     password="test1234",
@@ -22,40 +22,28 @@ except mysql.connector.errors.ProgrammingError:
   print(f"Error connecting, check credentials")
 
 
-sql = "SELECT indkøbsordre.Productid, Date, name, Freightno, amount, produkter.PurchasePrice, amount*produkter.PurchasePrice FROM indkøbsordre, produkter Where indkøbsordre.ProductId = produkter.ProductId ORDER BY indkøbsordre.ProductId DESC;"
-
-mycursor.execute(sql)
-myresult = mycursor.fetchall()
-
-productid = []
-date = []
-name = []
-freightno = []
-amount = []
-purchaseprice = []
-summ = []
-for i,d,n,f,a,p,s in myresult:
-  productid.append(i)
-  date.append(d)
-  name.append(n)
-  freightno.append(f)
-  amount.append(a)
-  purchaseprice.append(p)
-  summ.append(s)
-
-total_sum = ("{:,}".format(np.sum(summ)))
-total_sum_cal = sum(summ)
-
 sql = "SELECT sum(Quantity*UnitPrice) FROM salgsordre"
 mycursor.execute(sql)
 myresult = mycursor.fetchall()
 
-sum_sales = []
-sum_sales_cal = []
+#header#
+header = ["Total Sum of Sales"]
+#Nested loop to remove irrelevant decimals and symbols#
+sum = []
 for v in myresult:
   for t in v:
-    sum_sales.append("{:,}".format(t))
-    sum_sales_cal.append(t)
+    sum.append("{:,}".format(t))
+#Total_Sales for each element
+sql = "SELECT OrderDate, sum(Quantity*UnitPrice) FROM salgsordre GROUP BY  OrderDate"
+mycursor.execute(sql)
+myresult = mycursor.fetchall()
 
-total_rev = (sum_sales_cal[0]-total_sum_cal)
+sales_clean = []
+dates_d = []
+sales_d = []
+for d, s in myresult:
+    dates_d.append(str(d))
+    sales_d.append("{:,}".format(s))
+    sales_clean.append(int(s))
 
+print(sales_clean)
