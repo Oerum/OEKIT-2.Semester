@@ -55,7 +55,7 @@ try:
           sales_d.append("{:,}".format(s))
           sales_clean.append(int(s))
 
-      return render_template('generelt.html', header=header, datasæt=sum, date=dates_d, sales=sales_d, sales_clean=sales_clean)
+      return render_template('generelt.html', header=header, datasæt=sum, date=dates_d, sales_clean=sales_clean, sales_date=zip(dates_d,sales_d))
 
   @app.route('/erhvervsøkonomi')
   def erhversøkonomi():
@@ -106,6 +106,7 @@ try:
     mycursor.execute(sql)
     myresult = mycursor.fetchall()
 
+    #Data for front-end table#
     productid = []
     date = []
     name = []
@@ -122,21 +123,22 @@ try:
       purchaseprice.append(p)
       summ.append(s)
 
-    total_sum = ("{:,}".format(np.sum(summ)))
-    total_sum_cal = sum(summ)
+    #Formatting & Calculation for paragraf#
+    total_sum = ("{:,}".format(np.sum(summ))) #Purchase
+    total_sum_cal = sum(summ) #Purchase_noformat
 
     sql = "SELECT sum(Quantity*UnitPrice) FROM salgsordre"
     mycursor.execute(sql)
     myresult = mycursor.fetchall()
 
-    sum_sales = []
-    sum_sales_cal = []
+    sum_sales = [] #Sales
+    sum_sales_cal = [] #Sales_noformat
     for v in myresult:
       for t in v:
         sum_sales.append("{:,}".format(t))
         sum_sales_cal.append(t)
 
-    total_rev = ("{:,}".format((sum_sales_cal[0]-total_sum_cal)))
+    total_rev = ("{:,}".format((sum_sales_cal[0]-total_sum_cal))) #Calculation of Purchase&Sales_noformat & formatting to be easily readable
 
     return render_template('supplychain.html', data=zip(productid,date,name,freightno,amount,purchaseprice,summ), total_sum=total_sum,sum_sales=sum_sales, total_rev=total_rev)
 
@@ -151,7 +153,6 @@ try:
       return render_template('home.html'), 404
 
 
-  app.static_folder = 'static'
   if __name__ == '__main__':
       app.run(debug=True, host = "192.168.0.44", port = 5000) #Change this to suit your localhost or server#
 

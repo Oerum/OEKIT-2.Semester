@@ -6,103 +6,99 @@
 
 {% block body%}
 
-
+<div class="generelt_div">
   <p id="p1-generelt" class="text-center">Bedst egnet til desktop visning</p>
 
 
-<!--Linechart-->
-<div>
+  <!--Linechart-->
   <div>
-    <canvas id="line_sales_period"></canvas>
+    <div>
+      <canvas id="line_sales_period"></canvas>
+    </div>
+
+    <div>
+      
+      <script>
+      const labels = {{date | safe }}
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'Sales for each period',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: {{ sales_clean | safe }}
+        }]
+      };
+
+      const config = {
+        type: 'line',
+        data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+                  }
+
+      };
+
+        var myChart = new Chart(
+          document.getElementById('line_sales_period', ),
+          config
+        );
+      </script>
+    </div>
   </div>
 
-  <div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-    const labels = {{date | safe }}
-    const data = {
-      labels: labels,
-      datasets: [{
-        label: 'Sales for each period',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
-        data: {{ sales_clean | safe }}
-      }]
-    };
 
-    const config = {
-      type: 'line',
-      data,
-      options: {
-          responsive: true,
-          maintainAspectRatio: false
-                }
 
-    };
-
-      var myChart = new Chart(
-        document.getElementById('line_sales_period', ),
-        config
-      );
-    </script>
+  <!--Tables-->
+  <div class="table_sum_sales table-responsive text-center">
+      <table class="table table-striped table-hover text-center text-decoration-underline">
+        <thead>
+          <tr>
+              <tr>
+              {% for s in header %}
+                  <th>{{ s }}</th>
+              {% endfor %}
+              </tr>
+          </tr>
+        </thead>
+        <tbody>
+              <tr>
+              {% for s in datasæt %}
+                  <td>{{ s }}</td>
+              {% endfor %}
+              </tr>
+        </tbody>
+        </table>
   </div>
-</div>
 
+    <!--Table2-->
 
+  <p id="p2-generelt" class="text-center">Salg i Dkk for hver given periode:</p>
 
-<!--Tables-->
-<div class="table_sum_sales table-responsive text-center">
-    <table class="table table-striped table-hover text-center text-decoration-underline">
-      <thead>
-        <tr>
+    <div class="table-responsive text-center">
+      <table id="table_generelt" class="table table-hover table-striped table-bordered">
+        <thead>
             <tr>
-            {% for s in header %}
-                <th>{{ s }}</th>
-            {% endfor %}
+            <th>Dato</th>
+            <th>Salg</th>
             </tr>
-        </tr>
-      </thead>
-      <tbody>
-            <tr>
-            {% for s in datasæt %}
-                <td>{{ s }}</td>
-            {% endfor %}
-            </tr>
-      </tbody>
+        </thead>
+        <tbody>
+              {% for d,s in sales_date%}
+              <tr>
+              <td>{{d}}</td>
+              <td>{{s}}</td>
+              </tr>
+              {% endfor %}
+
+        </tbody>
       </table>
+    </div>
+
+
+  {%block scriptbottom%}{%endblock%}
 </div>
-
-  <!--Table2-->
- 
-<p id="p2-generelt" class="text-center">Salg i Dkk for hver given periode:</p>
-
-  <div class="table-responsive text-center">
-    <table class="table table-hover table-striped table-bordered">
-      <thead>
-            <tr id="table2_header">
-            {% for s in date %}
-                <th>{{ s }}</th>
-            {% endfor %}
-            </tr>
-        </tr>
-      </thead>
-      <tbody>
-            <tr id="table2_row">
-            {% for s in sales %}
-                <td>{{ s }}</td>
-            {% endfor %}
-            </tr>
-      </tbody>
-    </table>
-  </div>
-
-
-<!--h1-->
-<h1>test</h1>
-<p1>test</p1>
-
-{%block scriptbottom%}{%endblock%}
-
-{% endblock %}
+  {% endblock %}
 
 

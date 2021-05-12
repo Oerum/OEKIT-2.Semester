@@ -13,6 +13,17 @@ btn.on('click', function(e) {
   e.preventDefault();
   $('html, body').animate({scrollTop:0}, '300');
 });
+/* */
+
+/* generelt_table convert to datatable*/
+$(document).ready(function() {
+  $('#table_generelt').DataTable({
+    dom: 'Bfrtip',
+    buttons: [ 'copy', 'csv', 'excel' ],
+    fixedHeader: true,
+  });
+
+} );
 
 /* Supply_table convert to datatable*/
 $(document).ready(function() {

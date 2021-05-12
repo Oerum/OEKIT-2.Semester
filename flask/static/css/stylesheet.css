@@ -4,7 +4,6 @@
     width: auto;
     max-height: 46px;
     max-width: 46px;
-
 }
 
 body {
@@ -67,6 +66,12 @@ body {
 
 
 /* Generelt-html */
+.generelt_div {
+    margin-left:5%;
+    margin-right:5%;
+}
+
+
 #p1-generelt {
     font-weight: bold;
     text-decoration: underline;
@@ -104,16 +109,25 @@ body {
 }
 
 /* Systemudvikling-html */
-#table_systemudvikling_userstory {
-    float:left;
-    margin-top: 5px;
-    width: 45%;
+.systemudvikling_paragraf {
+    margin-left:20%;
+    margin-right: 20%;
+    margin-top:3%;
     max-width: 100%;
-    margin-bottom: 20px;
-    white-space: nowrap;
-    margin-left: 2.5%;
+    word-wrap: break-word;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #36344d;
+    letter-spacing: .5px;
+    line-height: 40px;
 }
 
+.systemudvikling_paragraf h1 {
+    font-size: 35px;
+}
 #table_systemudvikling_usercase {
     float: right;
     margin-top: 5px;
@@ -241,7 +255,7 @@ body {
         margin-top:3%;
         max-width: 100%;
         word-wrap: break-word;
-    
+
         font-family: Arial, Helvetica, sans-serif;
         font-size: 14px;
         line-height: 32px;
@@ -254,7 +268,7 @@ body {
         text-align: center;
         font-size: 20px;
         font-weight: bold;
-    
+
     }
     #our_names {
         text-align: center;
@@ -266,7 +280,7 @@ body {
         margin-top:3%;
         max-width: 100%;
         word-wrap: break-word;
-    
+
         font-family: Arial, Helvetica, sans-serif;
         font-size: 14px;
         line-height: 32px;
@@ -275,5 +289,28 @@ body {
         letter-spacing: .3px;
         line-height: 40px;
     }
+
+    .systemudvikling_paragraf {
+        margin-left:2%;
+        margin-right: 2%;
+        margin-top:3%;
+        max-width: 100%;
+        word-wrap: break-word;
+
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        line-height: 32px;
+        font-weight: 400;
+        color: #36344d;
+        letter-spacing: .3px;
+        line-height: 40px;
+    }
+    .systemudvikling_paragraf h1 {
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+
+    }
+
 
 }
