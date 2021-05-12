@@ -16,16 +16,30 @@ btn.on('click', function(e) {
 
 /* Supply_table convert to datatable*/
 $(document).ready(function() {
-  $('#supply_table').DataTable();
+  $('#supply_table').DataTable({
+    dom: 'Bfrtip',
+    buttons: [ 'copy', 'csv', 'excel' ],
+    fixedHeader: true,
+  });
+
 } );
 
 /* table_erhverv convert to datatable*/
 $(document).ready(function() {
-  $('#table_erhverv').DataTable();
+  $('#table_erhverv').DataTable({
+    dom: 'Bfrtip',
+    buttons: [ 'copy', 'csv', 'excel' ],
+    fixedHeader: true,
+  });
 } );
 
 /* erhvervs_post_sales convert to datatable*/
 $(document).ready(function() {
-  $('#post_sales').DataTable();
+  $('#post_sales').DataTable({
+    dom: 'Bfrtip',
+    buttons: [ 'copy', 'csv', 'excel' ],
+    fixedHeader: true,
+  });
 } );
+
 
