@@ -34,8 +34,8 @@ body {
     text-align: center;
     border-radius: 100px;
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 15px;
+    right: 7px;
     transition: background-color .3s,
         opacity .5s, visibility .5s;
     opacity: 0;
@@ -85,12 +85,6 @@ body {
     margin-left: 2px;
 
 }
-
-.table_sum_sales {
-    margin-left: 1px;
-    margin-right: 1px;
-}
-
 #p2-generelt {
     display: block;
     margin-top: -5px;
@@ -100,13 +94,16 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-#table2_header {
-    font-size: 12px;
+.table_sum_sales {
+    margin-left: 1px;
+    margin-right: 1px;
 }
 
-#table2_row {
-    font-size: 14px;
+.generelt_date_sales {
+    margin-bottom: 1.5%;
 }
+
+
 
 /* Systemudvikling-html */
 .systemudvikling_paragraf {
