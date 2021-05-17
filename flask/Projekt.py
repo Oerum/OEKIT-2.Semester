@@ -154,7 +154,7 @@ try:
 
 
   if __name__ == '__main__':
-      app.run(debug=True)#Change this to suit your localhost or server#
+      app.run(debug=True, host="192.168.0.44", port=5000)#Change this to suit your localhost or server#
 
 except:
   print('An error occoured in the backend')

@@ -253,6 +253,10 @@ body {
     color: #36344d;
     letter-spacing: .5px;
     line-height: 40px;
+
+    border-top: solid;
+    border-color: rgb(255, 0, 0);
+    border-width: 5px;
 }
 
 
