@@ -18,129 +18,180 @@ btn.on('click', function(e) {
 
 /*Generelt_table convert to datatable*/
 $(document).ready(function() {
-  $('#table_generelt').dataTable({
+  $('#table_generelt').DataTable( {
     dom: 'Bfrtip',
     buttons: [ 'copy', 'csv', 'excel' ],
     fixedHeader: true,
-    "footerCallback": function ( row, data, start, end, display ) {
+      "footerCallback": function ( row, data, start, end, display ) {
           var api = this.api(), data;
 
-          // converting to interger to find total
+          // Remove the formatting to get integer data for summation
           var intVal = function ( i ) {
-            return typeof i === 'string' ?
-                i.replace(/[\$,]/g, '')*1 :
-                typeof i === 'number' ?
-                    i : 0;
+              return typeof i === 'string' ?
+                  i.replace(/[\$,]/g, '')*1 :
+                  typeof i === 'number' ?
+                      i : 0;
           };
 
-          // computing column Total of the complete result
-          var monTotal = api
+          // Total over all pages
+          total = api
               .column( 1 )
               .data()
               .reduce( function (a, b) {
                   return intVal(a) + intVal(b);
               }, 0 );
-          var nf1 = new Intl.NumberFormat();
-          var totalsum_dec = nf1.format(monTotal)
+              var nf1 = new Intl.NumberFormat();
+              var total_dec = nf1.format(total)
 
-          // Update footer by showing the total with the reference of the column index
-          $( api.column( 1 ).footer() ).html('Total: ' + totalsum_dec);
+          // Total over this page
+          pageTotal = api
+              .column( 1, { page: 'current'} )
+              .data()
+              .reduce( function (a, b) {
+                  return intVal(a) + intVal(b);
+              }, 0 );
+              var nf2 = new Intl.NumberFormat();
+              var pagetotal_dec = nf2.format(pageTotal)
+
+          // Update footer
+          $( api.column( 1 ).footer() ).html(
+              'Pr. Side: ' + pagetotal_dec + ' --- ' + 'Total beløb: ' + total_dec
+          );
+      }
+  } );
+} );
+
+
+/* Supply_table convert to datatable*/
+$(document).ready(function() {
+  $('#supply_table').DataTable( {
+    dom: 'Bfrtip',
+    buttons: [ 'copy', 'csv', 'excel' ],
+    fixedHeader: true,
+      "footerCallback": function ( row, data, start, end, display ) {
+          var api = this.api(), data;
+
+          // Remove the formatting to get integer data for summation
+          var intVal = function ( i ) {
+              return typeof i === 'string' ?
+                  i.replace(/[\$,]/g, '')*1 :
+                  typeof i === 'number' ?
+                      i : 0;
+          };
+
+          // Total over all pages
+          total_antal = api
+              .column( 4 )
+              .data()
+              .reduce( function (a, b) {
+                  return intVal(a) + intVal(b);
+              }, 0 );
+              var nf1 = new Intl.NumberFormat();
+              var totalantal_dec = nf1.format(total_antal)
+
+          // Total over this page
+          pageTotal_antal = api
+              .column( 4, { page: 'current'} )
+              .data()
+              .reduce( function (a, b) {
+                  return intVal(a) + intVal(b);
+              }, 0 );
+              var nf2 = new Intl.NumberFormat();
+              var pagetotalantal_dec = nf2.format(pageTotal_antal)
+
+          // Total over all pages
+          total_indk = api
+          .column( 5 )
+          .data()
+          .reduce( function (a, b) {
+              return intVal(a) + intVal(b);
+          }, 0 );
+          var nf3 = new Intl.NumberFormat();
+          var totalindk_dec = nf3.format(total_indk)
+
+        // Total over this page
+        pageTotal_indk = api
+            .column( 5, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+            var nf4 = new Intl.NumberFormat();
+            var pagetotalindk_dec = nf4.format(pageTotal_indk)
+
+        // Total over all pages
+        total_sum = api
+        .column( 6 )
+        .data()
+        .reduce( function (a, b) {
+            return intVal(a) + intVal(b);
+        }, 0 );
+        var nf5 = new Intl.NumberFormat();
+        var totalsum_dec = nf5.format(total_sum)
+
+        // Total over this page
+        pageTotal_sum = api
+            .column( 6, { page: 'current'} )
+            .data()
+            .reduce( function (a, b) {
+                return intVal(a) + intVal(b);
+            }, 0 );
+            var nf6 = new Intl.NumberFormat();
+            var pagetotalsum_dec = nf6.format(pageTotal_sum)
+
+
+          // Update footer
+          $( api.column( 4 ).footer() ).html('Pr. Side: ' + pagetotalantal_dec + ' ____________ ' + 'Total antal: ' + totalantal_dec);
+          $( api.column( 5 ).footer() ).html('Pr. Side: '+ pagetotalindk_dec + ' ________________________ ' + 'Total antal: ' + totalindk_dec);
+          $( api.column( 6 ).footer() ).html('Pr. Side: '+ pagetotalsum_dec + ' ________________ ' + ' Total antal: ' + totalsum_dec);
+
       }
   } );
 } );
 
 
 
-/* Supply_table convert to datatable*/
+
+
+/* table_erhverv convert to datatable*/
 $(document).ready(function() {
-  $('#supply_table').dataTable({
+  $('#post_sales').DataTable( {
     dom: 'Bfrtip',
     buttons: [ 'copy', 'csv', 'excel' ],
     fixedHeader: true,
-    "footerCallback": function ( row, data, start, end, display ) {
+      "footerCallback": function ( row, data, start, end, display ) {
           var api = this.api(), data;
 
-          // converting to interger to find total
+          // Remove the formatting to get integer data for summation
           var intVal = function ( i ) {
-            return typeof i === 'string' ?
-                i.replace(/[\$,]/g, '')*1 :
-                typeof i === 'number' ?
-                    i : 0;
+              return typeof i === 'string' ?
+                  i.replace(/[\$,]/g, '')*1 :
+                  typeof i === 'number' ?
+                      i : 0;
           };
 
-          // computing column Total of the complete result
-          var Totalantal = api
-          .column( 4 )
+          // Total over all pages
+          total = api
+          .column( 1 )
           .data()
           .reduce( function (a, b) {
               return intVal(a) + intVal(b);
           }, 0 );
           var nf1 = new Intl.NumberFormat();
-          var totalantal_dec = nf1.format(Totalantal)
+          var total_dec = nf1.format(total)
 
-          var Totalind = api
-              .column( 5 )
+          // Total over this page
+          pageTotal = api
+              .column( 1, { page: 'current'} )
               .data()
               .reduce( function (a, b) {
                   return intVal(a) + intVal(b);
               }, 0 );
-          var nf2 = new Intl.NumberFormat();
-          var totalind_dec = nf2.format(Totalind)
+              var nf2 = new Intl.NumberFormat();
+              var pagetotal_dec = nf2.format(pageTotal)
 
-          var Totalsum = api
-              .column( 6 )
-              .data()
-              .reduce( function (a, b) {
-                  return intVal(a) + intVal(b);
-              }, 0 );
-          var nf2 = new Intl.NumberFormat();
-          var totalsum_dec = nf2.format(Totalsum)
-
-
-          // Update footer by showing the total with the reference of the column index
-          $( api.column( 4 ).footer() ).html('Total: ' + totalantal_dec);
-          $( api.column( 5 ).footer() ).html('Total: ' + totalind_dec);
-          $( api.column( 6 ).footer() ).html('Total: ' + totalsum_dec);
-      }
-  } );
-} );
-
-/* table_erhverv convert to datatable*/
-$(document).ready(function() {
-  $('#table_erhverv').DataTable({
-    dom: 'Bfrtip',
-    buttons: [ 'copy', 'csv', 'excel' ],
-    fixedHeader: true,
-  });
-} );
-
-/* erhvervs_post_sales convert to datatable*/
-$(document).ready(function() {
-  $('#post_sales').dataTable({
-    dom: 'Bfrtip',
-    buttons: [ 'copy', 'csv', 'excel' ],
-    fixedHeader: true,
-    "footerCallback": function ( row, data, start, end, display ) {
-          var api = this.api(), data;
-
-          // converting to interger to find total
-          var intVal = function ( i ) {
-            return typeof i === 'string' ?
-                i.replace(/[\$,]/g, '')*1 :
-                typeof i === 'number' ?
-                    i : 0;
-          };
-
-          // computing column Total of the complete result
-          var monTotal = api
-              .column( 1 )
-              .data()
-              .reduce( function (a, b) {
-                  return intVal(a) + intVal(b);
-              }, 0 );
-
-          // Update footer by showing the total with the reference of the column index
-          $( api.column( 1 ).footer() ).html('Antal salg i alt: ' + monTotal);
+            // Update footer
+            $( api.column( 1 ).footer() ).html('Pr. Side: '+ pagetotal_dec + ' - ' +  'Total salg: ' + total_dec);
       }
   } );
 } );
