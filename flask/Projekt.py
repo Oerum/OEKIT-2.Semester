@@ -36,7 +36,7 @@ try:
       myresult = mycursor.fetchall()
 
       #header#
-      header = ["Total Sum of Sales"]
+      header = ["Total salg"]
       #Nested loop to remove irrelevant decimals and symbols#
       sum = []
       for v in myresult:
