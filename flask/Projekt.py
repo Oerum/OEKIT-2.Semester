@@ -31,7 +31,7 @@ try:
 
   @app.route('/generelt')
   def generel():
-      sql = "SELECT sum(Quantity*UnitPrice) FROM salgsordre"
+      sql = "SELECT sum(Quantity*RetailPrice) FROM salgsordre"
       mycursor.execute(sql)
       myresult = mycursor.fetchall()
 
@@ -43,7 +43,7 @@ try:
         for t in v:
           sum.append("{:,}".format(t))
       #Total_Sales for each element
-      sql = "SELECT OrderDate, sum(Quantity*UnitPrice) FROM salgsordre GROUP BY  OrderDate"
+      sql = "SELECT OrderDate, sum(Quantity*RetailPrice) FROM salgsordre GROUP BY  OrderDate"
       mycursor.execute(sql)
       myresult = mycursor.fetchall()
 
@@ -127,7 +127,7 @@ try:
     total_sum = ("{:,}".format(np.sum(summ))) #Purchase
     total_sum_cal = sum(summ) #Purchase_noformat
 
-    sql = "SELECT sum(Quantity*UnitPrice) FROM salgsordre"
+    sql = "SELECT sum(Quantity*RetailPrice) FROM salgsordre"
     mycursor.execute(sql)
     myresult = mycursor.fetchall()
 
@@ -154,7 +154,7 @@ try:
 
 
   if __name__ == '__main__':
-      app.run(debug=True, host = "192.168.0.44", port = 5000) #Change this to suit your localhost or server#
+      app.run(debug=True)#Change this to suit your localhost or server#
 
 except:
   print('An error occoured in the backend')
