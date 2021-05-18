@@ -139,11 +139,14 @@ $(document).ready(function() {
             var nf6 = new Intl.NumberFormat();
             var pagetotalsum_dec = nf6.format(pageTotal_sum)
 
+        var revenue = total_sum-total_indk
+        var nf7 = new Intl.NumberFormat();
+        var revenue_dec = nf7.format(revenue)
 
           // Update footer
           $( api.column( 4 ).footer() ).html('Pr. Side: ' + pagetotalantal_dec + ' ____________ ' + 'Total antal: ' + totalantal_dec);
-          $( api.column( 5 ).footer() ).html('Pr. Side: '+ pagetotalindk_dec + ' ________________________ ' + 'Total antal: ' + totalindk_dec);
-          $( api.column( 6 ).footer() ).html('Pr. Side: '+ pagetotalsum_dec + ' ________________ ' + ' Total antal: ' + totalsum_dec);
+          $( api.column( 5 ).footer() ).html('Pr. Side: '+ pagetotalindk_dec + ' ________________________ ' + 'Total beløb: ' + totalindk_dec);
+          $( api.column( 6 ).footer() ).html('Pr. Side: '+ pagetotalsum_dec + ' _____________________ ' + ' Total antal: ' + totalsum_dec + ' _____________________ ' +  'Total indtjening: ' + revenue_dec);
 
       }
   } );
