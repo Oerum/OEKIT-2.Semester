@@ -125,15 +125,10 @@ body {
 .systemudvikling_paragraf h1 {
     font-size: 35px;
 }
-#table_systemudvikling_usercase {
-    float: right;
-    margin-top: 5px;
-    width: 45%;
-    max-width: 100%;
-    margin-bottom: 20px;
-    white-space: nowrap;
-    margin-right: 5%;
+.systemudvikling_sprint_headers {
+    font-weight: bold;
 }
+
 
 /* Projektledelse */
 .gantt-kort {
@@ -325,6 +320,7 @@ body {
         font-weight: bold;
 
     }
+
 
 
 }
