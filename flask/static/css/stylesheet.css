@@ -256,6 +256,29 @@ body {
 }
 
 
+/* Makroøkonomi */
+
+.makro_paragraph_div {
+    margin-left:20%;
+    margin-right: 20%;
+    margin-top:3%;
+    max-width: 100%;
+    word-wrap: break-word;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 400;
+    color: #36344d;
+    letter-spacing: .5px;
+    line-height: 40px;
+}
+.makro_header {
+    font-weight: bold;
+}
+
+
+
 @media only screen and (max-width: 1100px) {
 
     .paragraph_left_home {
@@ -321,6 +344,20 @@ body {
 
     }
 
+    .makro_paragraph_div {
+        margin-left:2%;
+        margin-right: 2%;
+        margin-top:3%;
+        max-width: 100%;
+        word-wrap: break-word;
 
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        line-height: 32px;
+        font-weight: 400;
+        color: #36344d;
+        letter-spacing: .3px;
+        line-height: 40px;
+    }
 
 }
