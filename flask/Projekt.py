@@ -1,19 +1,20 @@
-import mysql.connector
+import mysql.connector as mysql
 from flask import *
 import numpy as np
 
 try:
-  mydb = mysql.connector.connect(
+  mydb = mysql.connect(
     host="localhost", #boundsoul19375.ddns.net # Change settings to suit your preference
     port=19375,
-    user="Filip",
-    password="test1234",
-    database = "proshop_data"
+    user="Connector",
+    password="test12342134",
+    database = "Proshop"
   )
-  mycursor = mydb.cursor()
+  global cursor
+  cursor = mydb.cursor(buffered=True)
   #print(f"You are successfully connected to the database: {mydb.database}")
 
-except mysql.connector.errors.ProgrammingError:
+except mysql.errors.ProgrammingError:
   print(f"Error connecting, check credentials")
 
 
@@ -32,8 +33,8 @@ try:
   @app.route('/generelt')
   def generel():
       sql = "SELECT sum(Quantity*RetailPrice) FROM salgsordre"
-      mycursor.execute(sql)
-      myresult = mycursor.fetchall()
+      cursor.execute(sql)
+      myresult = cursor.fetchall()
 
       #header#
       header = ["Total salg"]
@@ -44,8 +45,8 @@ try:
           sum.append("{:,}".format(t))
       #Total_Sales for each element
       sql = "SELECT OrderDate, sum(Quantity*RetailPrice) FROM salgsordre GROUP BY  OrderDate"
-      mycursor.execute(sql)
-      myresult = mycursor.fetchall()
+      cursor.execute(sql)
+      myresult = cursor.fetchall()
 
       sales_clean = []
       dates_d = []
@@ -61,8 +62,8 @@ try:
   def erhversøkonomi():
       #Find ProfitRate for each product
       sql = "SELECT ProductId, Name ,profitrate FROM produkter"
-      mycursor.execute(sql)
-      myresult = mycursor.fetchall()
+      cursor.execute(sql)
+      myresult = cursor.fetchall()
 
       id = []
       name = []
@@ -73,8 +74,8 @@ try:
         profit.append(r)
       #Find postalcode and city to determine which area purchases most
       sql = "SELECT postnr, COUNT(city) FROM kunder group BY postnr ORDER by postnr "
-      mycursor.execute(sql)
-      myresult = mycursor.fetchall()
+      cursor.execute(sql)
+      myresult = cursor.fetchall()
 
       post = []
       city = []
@@ -103,8 +104,8 @@ try:
 
     sql = "SELECT indkøbsordre.Productid, Date, name, Freightno, amount, produkter.PurchasePrice, amount*produkter.PurchasePrice FROM indkøbsordre, produkter Where indkøbsordre.ProductId = produkter.ProductId ORDER BY Date DESC;"
 
-    mycursor.execute(sql)
-    myresult = mycursor.fetchall()
+    cursor.execute(sql)
+    myresult = cursor.fetchall()
 
     #Data for front-end table#
     productid = []
@@ -128,8 +129,8 @@ try:
     total_sum_cal = sum(summ) #Purchase_noformat
 
     sql = "SELECT sum(Quantity*RetailPrice) FROM salgsordre"
-    mycursor.execute(sql)
-    myresult = mycursor.fetchall()
+    cursor.execute(sql)
+    myresult = cursor.fetchall()
 
     sum_sales = [] #Sales
     sum_sales_cal = [] #Sales_noformat
@@ -154,7 +155,7 @@ try:
 
 
   if __name__ == '__main__':
-      app.run(debug=True, host="192.168.0.44", port=5000)#Change this to suit your localhost or server#
+      app.run(debug=True, host="localhost", port=5000)#Change this to suit your localhost or server#
 
 except:
   print('An error occoured in the backend, check host & port')
