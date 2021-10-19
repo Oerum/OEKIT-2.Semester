@@ -1,9 +1,9 @@
-import mysql.connector as mysql
+import mysql.connector
 from flask import *
 import numpy as np
 
 try:
-  mydb = mysql.connect(
+  mydb = mysql.connector.connect(
     host="localhost", #boundsoul19375.ddns.net # Change settings to suit your preference
     port=19375,
     user="Connector",
@@ -14,7 +14,7 @@ try:
   cursor = mydb.cursor(buffered=True)
   #print(f"You are successfully connected to the database: {mydb.database}")
 
-except mysql.errors.ProgrammingError:
+except mysql.connector.errors.ProgrammingError:
   print(f"Error connecting, check credentials")
 
 
